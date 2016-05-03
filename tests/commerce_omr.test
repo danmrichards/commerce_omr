@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Tests for the Commerce OMR module.
+ */
+
+/**
+ * Defines a base class for testing the Commerce OMR module.
+ */
+class CommerceOMRTestCase extends CommerceBaseTestCase {
+
+  /**
+   * The Omani Rial currency code.
+   *
+   * @var string
+   */
+  protected $currencyCode = 'OMR';
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Commerce Omani Rial Unit Tests',
+      'description' => 'Tests the Commerce Omani Rial module.',
+      'group' => 'Commerce Omani Rial',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    // Get the list of default modules from the parent class.
+    $modules = parent::setUpHelper('all');
+
+    // Add Commerce OMR to the list.
+    $modules[] = 'commerce_omr';
+
+    // Enable the modules.
+    parent::setUp($modules);
+  }
+
+  /**
+   * Test the Omani Rial currency is available.
+   */
+  public function testOmaniRialCurrencyAvailable() {
+    // Get the list of available currencies.
+    $currencies = commerce_currencies(FALSE);
+
+    // Is the currency available?
+    $omr_available = (isset($currencies[$this->currencyCode]) && !empty($currencies[$this->currencyCode]));
+    $this->assertTrue($omr_available, t('Omani Rial currency is available.'));
+  }
+
+}

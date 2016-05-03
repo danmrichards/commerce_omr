@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Main hooks and functionality for the Commerce OMR module.
+ */
+
+/**
+ * Implements hook_commerce_currency_info().
+ */
+function commerce_omr_commerce_currency_info() {
+  return array(
+    'OMR' => array(
+      'code' => 'OMR',
+      'symbol' => '﷼',
+      'name' => t('Omani Rial'),
+      'decimals' => 0,
+      'numeric_code' => '512',
+      'minor_unit' => t('Baisa'),
+      'major_unit' => t('Rial'),
+    ),
+  );
+}

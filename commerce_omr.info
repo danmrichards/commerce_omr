@@ -1,0 +1,8 @@
+name = Commerce Omani Rial
+description = Provides Omani Rial currency support for Drupal commerce.
+package = Commerce (contrib)
+core = 7.x
+
+dependencies[] = commerce
+
+files[] = tests/commerce_omr.test
