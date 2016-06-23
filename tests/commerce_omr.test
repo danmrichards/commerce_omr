@@ -8,7 +8,7 @@
 /**
  * Defines a base class for testing the Commerce OMR module.
  */
-class CommerceOMRTestCase extends CommerceBaseTestCase {
+class CommerceOMRTestCase extends DrupalWebTestCase {
 
   /**
    * The Omani Rial currency code.
@@ -32,14 +32,7 @@ class CommerceOMRTestCase extends CommerceBaseTestCase {
    * {@inheritdoc}
    */
   public function setUp() {
-    // Get the list of default modules from the parent class.
-    $modules = parent::setUpHelper('all');
-
-    // Add Commerce OMR to the list.
-    $modules[] = 'commerce_omr';
-
-    // Enable the modules.
-    parent::setUp($modules);
+    parent::setUp('commerce_omr');
   }
 
   /**
@@ -50,8 +43,7 @@ class CommerceOMRTestCase extends CommerceBaseTestCase {
     $currencies = commerce_currencies(FALSE);
 
     // Is the currency available?
-    $omr_available = (isset($currencies[$this->currencyCode]) && !empty($currencies[$this->currencyCode]));
-    $this->assertTrue($omr_available, t('Omani Rial currency is available.'));
+    $this->assertTrue(!empty($currencies[$this->currencyCode]), t('Omani Rial currency is available.'));
   }
 
 }
