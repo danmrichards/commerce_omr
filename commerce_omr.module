@@ -14,7 +14,6 @@ function commerce_omr_commerce_currency_info() {
       'code' => 'OMR',
       'symbol' => '﷼',
       'name' => t('Omani Rial'),
-      'decimals' => 0,
       'numeric_code' => '512',
       'minor_unit' => t('Baisa'),
       'major_unit' => t('Rial'),
